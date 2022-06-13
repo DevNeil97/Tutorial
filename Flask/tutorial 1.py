@@ -1,9 +1,21 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 
-app = Flask(__main__)
+app = Flask(__name__)
 
 
-def home()
+@app.route("/")
+def home():
+    return "Hello this is the main file <h1>HELLO</h1>"
+
+
+@app.route("/<name>")
+def user(name):
+    return f"hello {name}"
+
+
+@app.route("/admin")
+def admin():
+    return redirect(url_for("user", name="Admin!"))
 
 
 if __name__ == "__main__":
